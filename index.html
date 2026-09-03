@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Lit Lansing — Come see what your neighbors are building</title>
+    <meta name="description" content="Get Lit Lansing is Mid-Michigan’s community demo night. November 10, 2026 at MSUFCU, 311 Abbot Rd, East Lansing. Free to attend. Open to anyone with something to show.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dusk: #141A24;
+            --dusk-lift: #1C2433;
+            --window: #F4E4C8;
+            --window-deep: #E8D2A8;
+            --sodium: #E39B14;
+            --brick: #A8332C;
+            --filament: #FF5C2A;
+            --ink: #1C1612;
+            --mute: #6B5E52;
+            --glass: rgba(244, 228, 200, 0.08);
+            --line: rgba(244, 228, 200, 0.16);
+            --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+            --serif: "Source Serif 4", Georgia, serif;
+            --mono: "IBM Plex Mono", ui-monospace, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
+        }
+
+        body {
+            font-family: var(--serif);
+            line-height: 1.65;
+            color: var(--ink);
+            background: var(--window);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -3rem;
+            background: var(--sodium);
+            color: var(--dusk);
+            padding: 0.5rem 0.85rem;
+            font-family: var(--display);
+            font-weight: 700;
+            z-index: 200;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--sodium);
+            outline-offset: 3px;
+        }
+
+        /* Header */
+        header {
+            background: var(--dusk);
+            color: var(--window);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 4.25rem;
+        }
+
+        .logo {
+            font-family: var(--display);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            color: var(--window);
+        }
+
+        .logo em {
+            font-style: normal;
+            color: var(--sodium);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--window);
+            opacity: 0.82;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--sodium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1000;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--window);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero */
+        .hero {
+            background:
+                radial-gradient(ellipse 80% 55% at 50% -10%, rgba(227, 155, 20, 0.22), transparent 55%),
+                var(--dusk);
+            color: var(--window);
+            padding: 5rem 0 4.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-kicker {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--sodium);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-family: var(--display);
+            font-weight: 800;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .get {
+            display: block;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            opacity: 0.72;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero-title .lit {
+            display: block;
+            font-size: clamp(5rem, 18vw, 10.5rem);
+            color: #FFF3D6;
+            text-shadow:
+                0 0 18px rgba(227, 155, 20, 0.65),
+                0 0 48px rgba(255, 92, 42, 0.35),
+                0 8px 0 rgba(168, 51, 44, 0.18);
+        }
+
+        .hero-title .place {
+            display: block;
+            margin-top: 0.45rem;
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-lead {
+            max-width: 34rem;
+            margin: 0 auto 2rem;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: rgba(244, 228, 200, 0.88);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.25rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.85rem 1.6rem;
+            font-family: var(--display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 999px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--filament);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(255, 92, 42, 0.28);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 92, 42, 0.4);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--window);
+            border: 1px solid var(--line);
+        }
+
+        .btn-ghost:hover {
+            background: var(--glass);
+            transform: translateY(-2px);
+        }
+
+        .ticket-stub {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem 1.4rem;
+            padding: 0.85rem 1.4rem;
+            border: 1px dashed rgba(227, 155, 20, 0.55);
+            background: rgba(20, 26, 36, 0.45);
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--window);
+        }
+
+        .ticket-stub span + span {
+            border-left: 1px solid var(--line);
+            padding-left: 1.4rem;
+        }
+
+        .light-bar {
+            height: 6px;
+            margin-top: 3.5rem;
+            background: linear-gradient(90deg, transparent, var(--sodium) 20%, #FFF3D6 50%, var(--filament) 80%, transparent);
+            box-shadow: 0 0 28px rgba(227, 155, 20, 0.55);
+        }
+
+        /* Shared section chrome */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section h2 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .lede {
+            font-size: 1.15rem;
+            max-width: 40rem;
+        }
+
+        /* About */
+        .about {
+            background: var(--window);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-copy p {
+            color: var(--mute);
+            margin-bottom: 1.15rem;
+            font-size: 1.08rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .feature {
+            background: #fff8ea;
+            border: 1px solid rgba(28, 22, 18, 0.08);
+            padding: 1.35rem;
+        }
+
+        .feature h3 {
+            font-family: var(--display);
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature p {
+            color: var(--mute);
+            font-size: 0.98rem;
+        }
+
+        /* Why */
+        .why {
+            background: var(--dusk);
+            color: var(--window);
+        }
+
+        .why .lede {
+            color: rgba(244, 228, 200, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .why-card {
+            background: var(--dusk-lift);
+            padding: 1.6rem;
+            border-top: 3px solid var(--sodium);
+        }
+
+        .why-card h3 {
+            font-family: var(--display);
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.6rem;
+        }
+
+        .why-card p {
+            color: rgba(244, 228, 200, 0.78);
+            font-size: 1rem;
+        }
+
+        /* Evening */
+        .evening {
+            background: var(--window);
+        }
+
+        .evening .lede {
+            color: var(--mute);
+            margin-bottom: 2.5rem;
+        }
+
+        .run-of-show {
+            list-style: none;
+            display: grid;
+            gap: 0;
+            border-left: 2px solid rgba(168, 51, 44, 0.35);
+            margin-bottom: 2.5rem;
+        }
+
+        .slot {
+            display: grid;
+            grid-template-columns: 10rem 1fr;
+            gap: 1.5rem;
+            padding: 1.15rem 0 1.15rem 1.5rem;
+            position: relative;
+        }
+
+        .slot::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 1.45rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--filament);
+            box-shadow: 0 0 0 4px var(--window);
+        }
+
+        .slot time {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: var(--brick);
+            padding-top: 0.15rem;
+        }
+
+        .slot h3 {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .slot p {
+            color: var(--mute);
+        }
+
+        .present-band {
+            background: #fff8ea;
+            border: 1px solid rgba(28, 22, 18, 0.08);
+            padding: 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .present-band p {
+            color: var(--mute);
+            max-width: 38rem;
+        }
+
+        .present-band .btn-primary {
+            flex-shrink: 0;
+        }
+
+        /* Info */
+        .info {
+            background: #fff8ea;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--window);
+            padding: 1.5rem;
+            border-top: 3px solid var(--brick);
+        }
+
+        .info-card h3 {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--brick);
+            margin-bottom: 0.65rem;
+        }
+
+        .info-card p {
+            font-family: var(--display);
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+            line-height: 1.35;
+        }
+
+        .info-card a {
+            color: var(--brick);
+        }
+
+        /* Community */
+        .community {
+            background: var(--dusk);
+            color: var(--window);
+            text-align: center;
+        }
+
+        .community .lede {
+            margin: 0 auto 2rem;
+            color: rgba(244, 228, 200, 0.8);
+        }
+
+        .community-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .community-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0.55rem 1.15rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            text-decoration: none;
+            font-family: var(--display);
+            font-weight: 700;
+            color: var(--window);
+        }
+
+        .community-link:hover {
+            border-color: var(--sodium);
+            color: var(--sodium);
+        }
+
+        /* Sponsors */
+        .sponsors {
+            background: var(--window);
+            text-align: center;
+        }
+
+        .sponsors .lede {
+            margin: 0 auto 2rem;
+            color: var(--mute);
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .sponsor-card {
+            background: #fff;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 8rem;
+            border: 1px solid rgba(28, 22, 18, 0.08);
+        }
+
+        .sponsor-card a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sponsor-card img {
+            height: 56px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .sponsor-name {
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: -0.02em;
+            margin-top: 0.65rem;
+        }
+
+        .sponsor-note {
+            margin-top: 0.85rem;
+            font-size: 0.9rem;
+            color: var(--mute);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dusk);
+            color: rgba(244, 228, 200, 0.72);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--sodium);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid,
+            .why-grid,
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: min(78%, 300px);
+                height: 100vh;
+                background: var(--dusk);
+                padding: 5.5rem 1.75rem 2rem;
+                transition: right 0.25s ease;
+                box-shadow: -8px 0 24px rgba(0, 0, 0, 0.28);
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+                opacity: 1;
+            }
+
+            .about-grid,
+            .feature-grid,
+            .why-grid,
+            .info-grid,
+            .sponsor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slot {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+
+            .ticket-stub span + span {
+                border-left: none;
+                padding-left: 0;
+            }
+
+            .present-band {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section {
+                padding: 3.25rem 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .hero-title .lit {
+                text-shadow: none;
+            }
+
+            .light-bar {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#top" class="logo">Get <em>Lit</em> Lansing</a>
+                <button class="mobile-menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="site-nav">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#why">Why</a></li>
+                        <li><a href="#evening">Evening</a></li>
+                        <li><a href="#info">Info</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#sponsors">Sponsors</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero" id="top">
+            <div class="container">
+                <p class="hero-kicker">Lansing’s community demo night</p>
+                <h1 class="hero-title">
+                    <span class="get">Get</span>
+                    <span class="lit">LIT</span>
+                    <span class="place">Lansing</span>
+                </h1>
+                <p class="hero-lead">Come see what your neighbors are building — startups, company work, weekend projects, all on the same stage.</p>
+                <div class="hero-actions">
+                    <!-- Replace href with Eventbrite URL when tickets go live -->
+                    <a class="btn btn-primary" href="#tickets">Get a free ticket</a>
+                    <!-- Replace href with the demo submission form when it goes live -->
+                    <a class="btn btn-ghost" href="#present">Want to present?</a>
+                </div>
+                <p class="ticket-stub">
+                    <span>Tue Nov 10, 2026</span>
+                    <span>4:30–7:30 PM</span>
+                    <span>MSUFCU · 311 Abbot Rd</span>
+                </p>
+            </div>
+            <div class="light-bar" aria-hidden="true"></div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-copy">
+                        <h2>What is Get Lit Lansing?</h2>
+                        <p>Get Lit Lansing is where Mid-Michigan’s tech community gathers to show what they’ve built. Established teams, new startups, students, and solo makers share the same stage for a few minutes each.</p>
+                        <p>The night is part show-and-tell, part hallway conversation. You will see live demos, meet the people behind them, and leave knowing more about what is happening in your own backyard.</p>
+                    </div>
+                    <div class="feature-grid">
+                        <article class="feature">
+                            <h3>Community showcase</h3>
+                            <p>Researchers, companies, garage tinkerers — one evening, one room.</p>
+                        </article>
+                        <article class="feature">
+                            <h3>Show your work</h3>
+                            <p>Five to seven minutes. A real thing. Honest feedback from people who build.</p>
+                        </article>
+                        <article class="feature">
+                            <h3>Meet your neighbors</h3>
+                            <p>Enterprise teams and solo makers in the same conversation.</p>
+                        </article>
+                        <article class="feature">
+                            <h3>Open to all</h3>
+                            <p>No pitch contest. No gatekeeping. If you built it and you are proud of it, bring it.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why" class="section why">
+            <div class="container">
+                <h2>Why you should be there</h2>
+                <p class="lede">You will be surprised by what is already being built in Lansing. Come watch it, then stay and talk to the people who made it.</p>
+                <div class="why-grid">
+                    <article class="why-card">
+                        <h3>See what is actually happening</h3>
+                        <p>Live demos from local companies, startups, and personal projects — automotive, health, education, and whatever someone finished last week.</p>
+                    </article>
+                    <article class="why-card">
+                        <h3>Sharing, not competing</h3>
+                        <p>This is not a pitch-off. Companies trade notes with startups. Experienced builders talk with people presenting for the first time.</p>
+                    </article>
+                    <article class="why-card">
+                        <h3>A scene that is growing</h3>
+                        <p>MSU talent, a thickening startup mix, and established tech teams. Be in the room while it is still easy to know everyone.</p>
+                    </article>
+                    <article class="why-card">
+                        <h3>Useful introductions</h3>
+                        <p>The person next to you might be a collaborator, a hire, a mentor, or just someone who wants to talk about the same hard problem.</p>
+                    </article>
+                    <article class="why-card">
+                        <h3>Your night to show it</h3>
+                        <p>Keeping a project in a private repo is safe. Showing it to people who care is more useful — and more fun.</p>
+                    </article>
+                    <article class="why-card">
+                        <h3>No barriers</h3>
+                        <p>Free to attend. Open to every skill level and background. Enthusiasm for making things is the only requirement.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="evening" class="section evening">
+            <div class="container">
+                <h2>How the evening runs</h2>
+                <p class="lede">Lightning demos, then time to talk. Speaker names land once the lineup is set.</p>
+                <ol class="run-of-show">
+                    <li class="slot">
+                        <time datetime="2026-11-10T16:30">4:30 PM</time>
+                        <div>
+                            <h3>Doors and mixing</h3>
+                            <p>Come in, grab a drink, and wander the room. Demo stations are open before the program starts.</p>
+                        </div>
+                    </li>
+                    <li class="slot">
+                        <time datetime="2026-11-10T17:25">5:25 PM</time>
+                        <div>
+                            <h3>Welcome</h3>
+                            <p>A short open, then we start the first block of demos.</p>
+                        </div>
+                    </li>
+                    <li class="slot">
+                        <time datetime="2026-11-10T17:30">5:30 PM</time>
+                        <div>
+                            <h3>Lightning demos</h3>
+                            <p>Five to seven minutes each. Built things only — products, tools, research, games, hardware.</p>
+                        </div>
+                    </li>
+                    <li class="slot">
+                        <time>Mid-evening</time>
+                        <div>
+                            <h3>Questions and a break</h3>
+                            <p>Ask the presenters what you want to know, then get another look at the stations.</p>
+                        </div>
+                    </li>
+                    <li class="slot">
+                        <time>Second block</time>
+                        <div>
+                            <h3>More lightning demos</h3>
+                            <p>Another set of short shows, then closing remarks and a group photo.</p>
+                        </div>
+                    </li>
+                    <li class="slot">
+                        <time datetime="2026-11-10T19:30">7:30 PM</time>
+                        <div>
+                            <h3>Goodnight</h3>
+                            <p>We wrap around 7:30. Stay a few extra minutes if you can help stack chairs.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="present-band" id="present">
+                    <div>
+                        <h3>Want to present?</h3>
+                        <p>If you have something you built and want seven minutes in front of this room, we want to hear from you. Companies, startups, students, and solo makers all get the same slot.</p>
+                    </div>
+                    <!-- Replace href with the demo submission form when it goes live -->
+                    <a class="btn btn-primary" href="#present">Submit a demo — link soon</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="info" class="section info">
+            <div class="container">
+                <h2>Join us — it’s free</h2>
+                <div class="info-grid" id="tickets">
+                    <article class="info-card">
+                        <h3>When</h3>
+                        <p>November 10, 2026<br>4:30 PM – 7:30 PM</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Where</h3>
+                        <p>MSUFCU<br><a href="https://www.google.com/maps/search/?api=1&amp;query=311+Abbot+Rd,+East+Lansing,+MI+48823" target="_blank" rel="noopener">311 Abbot Rd</a>, East Lansing, MI 48823</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Format</h3>
+                        <p>5–7 minute demos, then questions and mixing. Open to companies, startups, and individuals.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Cost</h3>
+                        <p>Free. Bring your team or come alone. Ticket link coming soon.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="section community">
+            <div class="container">
+                <h2>Part of Lansing’s tech community</h2>
+                <p class="lede">Get Lit Lansing sits with the groups already making Mid-Michigan a place to build. Come for the demos, stay for the people.</p>
+                <div class="community-links">
+                    <a class="community-link" href="https://www.lansing.codes/" target="_blank" rel="noopener">Lansing Codes</a>
+                    <a class="community-link" href="https://www.mitn.org" target="_blank" rel="noopener">Michigan Technology Network</a>
+                    <a class="community-link" href="https://www.meetup.com/lansing-codes-meetup/" target="_blank" rel="noopener">Lansing Codes Meetup</a>
+                    <a class="community-link" href="https://www.meetup.com/lansing-tech-demos/" target="_blank" rel="noopener">Tech Demo Night</a>
+                    <a class="community-link" href="https://www.meetup.com/lansing-ai-user-group/" target="_blank" rel="noopener">Lansing AI Group</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sponsors" class="section sponsors">
+            <div class="container">
+                <h2>Sponsors</h2>
+                <p class="lede">Thank you to the groups that make a free community night possible.</p>
+                <div class="sponsor-grid">
+                    <div class="sponsor-card">
+                        <a href="https://www.msufcu.org/" target="_blank" rel="noopener">
+                            <img src="https://media.msufcu.org/publicsites/publicsite/graphics/msufcu/msufcuLogo.svg" alt="">
+                            <p class="sponsor-name">MSU Federal Credit Union</p>
+                        </a>
+                    </div>
+                    <div class="sponsor-card">
+                        <a href="https://msufoundation.org/" target="_blank" rel="noopener">
+                            <img src="https://msufoundation.org/wp-content/uploads/2025/02/MSURF-logo-600x202.png" alt="">
+                            <p class="sponsor-name">MSU Foundation</p>
+                        </a>
+                    </div>
+                    <div class="sponsor-card">
+                        <a href="https://www.purelansing.com/" target="_blank" rel="noopener">
+                            <img src="https://www.purelansing.com/wp-content/uploads/leap-logo-retina.png" alt="">
+                            <p class="sponsor-name">LEAP</p>
+                        </a>
+                        <p class="sponsor-note">Supported in part by the Lansing Economic Area Partnership and the Lansing Regional Smart Zone.</p>
+                    </div>
+                    <div class="sponsor-card">
+                        <a href="https://rmcagency.com/" target="_blank" rel="noopener">
+                            <img src="https://rmcagency.com/wp-content/uploads/2021/12/LOGO3d2.png" alt="">
+                            <p class="sponsor-name">RMC</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Get Lit Lansing. Part of the <a href="https://www.lansing.codes/" target="_blank" rel="noopener">Lansing Codes</a> community.</p>
+            <p>Built with care in Lansing, Michigan</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const nav = document.querySelector("nav");
+
+        function closeMenu() {
+            mobileMenuToggle.setAttribute("aria-expanded", "false");
+            nav.classList.remove("active");
+            document.body.classList.remove("menu-open");
+        }
+
+        mobileMenuToggle.addEventListener("click", () => {
+            const open = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+            mobileMenuToggle.setAttribute("aria-expanded", String(!open));
+            nav.classList.toggle("active");
+            document.body.classList.toggle("menu-open");
+        });
+
+        document.querySelectorAll("nav a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+    </script>
+</body>
+</html>
