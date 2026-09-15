@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Get Lit Lansing — cover image source</title>
+<!--
+    Source for the Luma / social cover images in this folder.
+    Render with headless Chrome, e.g.:
+      chrome --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
+        --screenshot=assets/cover-luma.png --window-size=1200,630 \
+        "file://$PWD/assets/cover.html"
+    Add ?ratio=square to the URL for the 1:1 crop (window-size 1080,1080).
+    The square crop shows less: Luma renders it small, so venue and price drop off.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --dusk: #141A24;
+        --window: #F4E4C8;
+        --sodium: #E39B14;
+        --brick: #A8332C;
+        --filament: #FF5C2A;
+        --line: rgba(244, 228, 200, 0.16);
+        --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dusk);
+        color: var(--window);
+        font-family: var(--display);
+    }
+
+    .cover {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 5% 6%;
+        background:
+            radial-gradient(ellipse 75% 60% at 50% -8%, rgba(227, 155, 20, 0.30), transparent 60%),
+            radial-gradient(ellipse 60% 45% at 50% 115%, rgba(255, 92, 42, 0.18), transparent 60%),
+            var(--dusk);
+        overflow: hidden;
+    }
+
+    /* Faint filament grid, like light through a warehouse window */
+    .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(244, 228, 200, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(244, 228, 200, 0.045) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 35%, transparent 78%);
+        -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 35%, transparent 78%);
+    }
+
+    .cover > * { position: relative; }
+
+    .kicker {
+        font-family: var(--mono);
+        font-size: 1.05rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sodium);
+        margin-bottom: 1.1rem;
+    }
+
+    .title {
+        font-weight: 800;
+        line-height: 0.84;
+        letter-spacing: -0.05em;
+    }
+
+    .title .get {
+        display: block;
+        font-size: 2.1rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        opacity: 0.72;
+        margin-bottom: 0.5rem;
+    }
+
+    .title .lit {
+        display: block;
+        font-size: 11rem;
+        color: #FFF3D6;
+        text-shadow:
+            0 0 20px rgba(227, 155, 20, 0.7),
+            0 0 60px rgba(255, 92, 42, 0.4),
+            0 10px 0 rgba(168, 51, 44, 0.2);
+    }
+
+    .title .place {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 3.1rem;
+        letter-spacing: -0.035em;
+    }
+
+    .light-bar {
+        width: min(760px, 74%);
+        height: 6px;
+        margin: 2.1rem 0 1.9rem;
+        background: linear-gradient(90deg, transparent, var(--sodium) 20%, #FFF3D6 50%, var(--filament) 80%, transparent);
+        box-shadow: 0 0 30px rgba(227, 155, 20, 0.55);
+    }
+
+    .tagline {
+        font-size: 2.05rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #FFF3D6;
+        margin-bottom: 1.9rem;
+    }
+
+    .stub {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 0.85rem 1.6rem;
+        border: 1px dashed rgba(227, 155, 20, 0.55);
+        background: rgba(20, 26, 36, 0.45);
+        font-family: var(--mono);
+        font-size: 1.05rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .stub span + span {
+        border-left: 1px solid var(--line);
+        padding-left: 1.5rem;
+    }
+
+    /* 1:1 crop — Luma renders it small, so it carries less */
+    body.square .cover { padding: 9% 7%; }
+    body.square .kicker { font-size: 1.5rem; letter-spacing: 0.2em; margin-bottom: 1.8rem; }
+    body.square .title .get { font-size: 3.1rem; }
+    body.square .title .lit { font-size: 15rem; }
+    body.square .title .place { font-size: 4.4rem; }
+    body.square .light-bar { width: 86%; margin: 3rem 0 2.6rem; }
+    body.square .tagline { font-size: 3rem; margin-bottom: 2.8rem; }
+    body.square .stub { font-size: 1.7rem; gap: 2rem; padding: 1.2rem 2.2rem; }
+    body.square .stub span + span { padding-left: 2rem; }
+    body.square .stub span:nth-child(n+3) { display: none; }
+</style>
+</head>
+<body>
+    <div class="cover">
+        <p class="kicker">Lansing&rsquo;s tech showcase</p>
+        <h1 class="title">
+            <span class="get">GET</span>
+            <span class="lit">LIT</span>
+            <span class="place">Lansing</span>
+        </h1>
+        <div class="light-bar"></div>
+        <p class="tagline">Cool people, doing cool sh*t.</p>
+        <p class="stub">
+            <span>Tue Nov 10</span>
+            <span>4:30&ndash;9 PM</span>
+            <span>MSUFCU &middot; 7th Floor</span>
+            <span>Free</span>
+        </p>
+    </div>
+    <script>
+        if (new URLSearchParams(location.search).get('ratio') === 'square') {
+            document.body.classList.add('square');
+        }
+    </script>
+</body>
+</html>
