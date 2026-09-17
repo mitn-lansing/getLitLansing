@@ -16,7 +16,7 @@ The night runs as an **interactive fair**. Presenters set up a table or booth, a
 - Room for up to 40 presentation setups
 - Screens available for presenters who want to show digital content
 - Optional 5–7 minute speaking slots for anyone who would rather give a formal talk
-- Lightning talk blocks (5–10 minutes each) as an alternative speaking format
+- Lightning talk blocks (3–5 minutes each) as an alternative speaking format
 - Built-in time to mingle between any formal presentations
 
 Attendees can visit tables, attend talks, or both.
