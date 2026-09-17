@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Get Lit Lansing">
+    <title>Get Lit Lansing</title>
+    <defs>
+        <radialGradient id="glow" cx="50%" cy="46%" r="58%">
+            <stop offset="0%" stop-color="#E39B14" stop-opacity="0.55"/>
+            <stop offset="55%" stop-color="#FF5C2A" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#FF5C2A" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#E39B14" stop-opacity="0"/>
+            <stop offset="22%" stop-color="#E39B14"/>
+            <stop offset="50%" stop-color="#FFF3D6"/>
+            <stop offset="78%" stop-color="#FF5C2A"/>
+            <stop offset="100%" stop-color="#FF5C2A" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="0" fill="#141A24"/>
+    <rect width="64" height="64" rx="0" fill="url(#glow)"/>
+    <g transform="translate(32 32) scale(1) translate(-32 -32)" fill="#FFF3D6">
+        <!-- L -->
+        <rect x="8.5" y="16" width="7" height="26"/>
+        <rect x="8.5" y="35" width="16" height="7"/>
+        <!-- I -->
+        <rect x="28" y="16" width="7" height="26"/>
+        <!-- T -->
+        <rect x="38.5" y="16" width="17" height="7"/>
+        <rect x="43.5" y="16" width="7" height="26"/>
+        <!-- light bar -->
+        <rect x="10" y="47" width="44" height="4" rx="2" fill="url(#bar)"/>
+    </g>
+</svg>

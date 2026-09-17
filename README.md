@@ -32,7 +32,25 @@ MSU students and faculty (including Burgess Institute, MSU Technology, and LEAP)
 - **Cost:** Free — [RSVP on Luma](https://luma.com/nsgv3u1y)
 
 Presenters (tables and talks) sign up through the [Get Lit Lansing presenter form](https://forms.gle/3aE34iejLinmuGDcA).
-Attendees register on [Luma](https://luma.com/nsgv3u1y).
+Attendees register on [Luma](https://luma.com/nsgv3u1y), or grab the [calendar invite](assets/get-lit-lansing-2026.ics).
+
+## Site notes
+
+Plain static HTML, served by GitHub Pages from the repo root with `.nojekyll` (no build step).
+
+- `index.html` — the whole page; styles are inline in `<head>`, as is the `schema.org/Event` JSON-LD.
+  Update the JSON-LD `startDate`/`endDate`/`offers` whenever the event details change.
+- `404.html`, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `favicon.ico`
+- `assets/favicon.svg`, `assets/icon-*.png`, `assets/apple-touch-icon.png` — the LIT mark, drawn as
+  plain rects so it stays crisp at 16px. Regenerate the PNGs from the SVGs with headless Chrome.
+- `assets/og-cover.png` — 1200x630 social card, downscaled from `assets/cover-luma.png`.
+- `assets/cover.html` — source for the cover images; see the comment at the top for the render command.
+- `assets/get-lit-lansing-2026.ics` — calendar invite (times stored as UTC).
+- `assets/sponsors/` — sponsor logos, kept local so the sponsor wall cannot break when a
+  sponsor reorganizes their own site.
+
+A "Good to know" section (parking, after-hours building access, food, accessibility) is stubbed out
+in `index.html` as an HTML comment. Fill in the real details and uncomment it, along with its nav link.
 
 ## Get involved
 

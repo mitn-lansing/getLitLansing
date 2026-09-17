@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Get Lit Lansing//getlitlansing.org//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:get-lit-lansing-2026-11-10@getlitlansing.org
+DTSTAMP:20260917T000000Z
+DTSTART:20261110T213000Z
+DTEND:20261111T020000Z
+SUMMARY:Get Lit Lansing
+DESCRIPTION:Mid-Michigan's community tech showcase. An interactive fair 
+ of demo tables plus optional 5-7 minute talks and lightning talk blocks
+ . Free to attend.\n\nRSVP: https://luma.com/nsgv3u1y\nWant to present? 
+ https://forms.gle/3aE34iejLinmuGDcA\nDetails: https://getlitlansing.org
+ /
+LOCATION:MSU Federal Credit Union\, 7th floor\, 311 Abbot Rd\, East Lans
+ ing\, MI 48823
+GEO:42.7335;-84.4839
+URL:https://getlitlansing.org/
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Get Lit Lansing is tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR
