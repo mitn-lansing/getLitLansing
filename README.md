@@ -23,7 +23,7 @@ Attendees can visit tables, attend talks, or both.
 
 ## Who it's for
 
-MSU students and faculty (including Burgess Institute, MSU Technology, and LEAP), local tech groups and startups, local Lansing businesses, game developers, robotics clubs, and anyone working on interesting technology projects in Lansing.
+MSU students and faculty (including Burgess Institute and MSU Technology), the Lansing Regional SmartZone, local tech groups and startups, local Lansing businesses, game developers, robotics clubs, and anyone working on interesting technology projects in Lansing.
 
 ## Next event
 
